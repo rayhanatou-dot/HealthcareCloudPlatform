@@ -12,15 +12,15 @@ class Settings(BaseSettings):
 
     DATABASE_URL: str = "postgresql://your_postgres_user:your_postgres_password@localhost:5432/healthcare_cloud_db"
 
-    JWT_SECRET_KEY: str = "replace_with_a_secure_secret_key"
+    JWT_SECRET_KEY: str = "replace_with_secure_random_key"
     JWT_ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+    JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     MINIO_ENDPOINT: str = "localhost:9000"
     MINIO_ROOT_USER: str = "your_minio_user"
     MINIO_ROOT_PASSWORD: str = "your_minio_password"
     MINIO_BUCKET_NAME: str = "healthcare-files"
-
+    MINIO_SECURE: bool = False
     model_config = SettingsConfigDict(
         env_file="../.env",
         env_file_encoding="utf-8",
