@@ -24,3 +24,5 @@ datasets/large/
 .coverage
 htmlcov/
 datasets/mimic-iv-demo/
+
+datasets/cms-de-synpuf/
