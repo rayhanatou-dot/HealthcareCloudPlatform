@@ -20,3 +20,4 @@ __all__ = [
     "Role",
     "User",
 ]
+from app.models.condition import Condition
