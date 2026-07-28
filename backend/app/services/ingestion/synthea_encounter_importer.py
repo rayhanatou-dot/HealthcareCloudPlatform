@@ -199,3 +199,43 @@ def import_synthea_encounters(
         "skipped": skipped_count,
         "skip_reasons": skip_reasons,
     }
+# ==========================================================
+# Standalone execution
+# ==========================================================
+
+if __name__ == "__main__":
+
+    from app.db.session import SessionLocal
+
+    csv_path = (
+        Path(__file__)
+        .resolve()
+        .parents[4]
+        / "datasets"
+        / "synthea"
+        / "csv"
+        / "encounters.csv"
+    )
+
+    print(
+        f"Loading Synthea encounters file: {csv_path}"
+    )
+
+    db = SessionLocal()
+
+    try:
+
+        result = import_synthea_encounters(
+            db=db,
+            csv_file_path=csv_path,
+        )
+
+        print(
+            "Synthea encounter import completed"
+        )
+
+        print(result)
+
+    finally:
+
+        db.close()

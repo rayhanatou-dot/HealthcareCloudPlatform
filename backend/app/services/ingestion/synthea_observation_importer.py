@@ -15,6 +15,7 @@ SYNTHEA_SOURCE_SYSTEM = "synthea"
 
 
 def clean_optional_string(value: str | None):
+
     if value is None:
         return None
 
@@ -27,18 +28,26 @@ def clean_optional_string(value: str | None):
 
 
 def parse_optional_datetime(value: str | None):
+
     value = clean_optional_string(value)
 
     if value is None:
         return None
 
-    normalized_value = value.replace("Z", "+00:00")
+    normalized_value = value.replace(
+        "Z",
+        "+00:00"
+    )
 
-    parsed_datetime = datetime.fromisoformat(normalized_value)
+    parsed_datetime = datetime.fromisoformat(
+        normalized_value
+    )
 
     if parsed_datetime.tzinfo is not None:
+
         parsed_datetime = (
-            parsed_datetime.astimezone(timezone.utc)
+            parsed_datetime
+            .astimezone(timezone.utc)
             .replace(tzinfo=None)
         )
 
@@ -46,6 +55,7 @@ def parse_optional_datetime(value: str | None):
 
 
 def parse_optional_float(value: str | None):
+
     value = clean_optional_string(value)
 
     if value is None:
@@ -58,7 +68,8 @@ def parse_optional_float(value: str | None):
         return None
 
 
-def build_observation_external_id(row: dict) -> str:
+def build_observation_external_id(row: dict):
+
     raw_identifier = "|".join(
         [
             clean_optional_string(row.get("DATE")) or "",
@@ -73,15 +84,18 @@ def build_observation_external_id(row: dict) -> str:
 
     digest = hashlib.sha256(
         raw_identifier.encode("utf-8")
-    ).hexdigest()[:24]
+    ).hexdigest()
 
-    return f"synthea-observation-{digest}"
+    return (
+        f"synthea-observation-{digest}"
+    )
 
 
 def find_patient_by_synthea_id(
     db: Session,
     synthea_patient_id: str,
 ):
+
     statement = select(Patient).where(
         Patient.source_system == SYNTHEA_SOURCE_SYSTEM,
         Patient.external_id == synthea_patient_id,
@@ -94,6 +108,7 @@ def find_encounter_by_synthea_id(
     db: Session,
     synthea_encounter_id: str | None,
 ):
+
     synthea_encounter_id = clean_optional_string(
         synthea_encounter_id
     )
@@ -113,6 +128,7 @@ def find_existing_observation(
     db: Session,
     external_id: str,
 ):
+
     statement = select(Observation).where(
         Observation.source_system == SYNTHEA_SOURCE_SYSTEM,
         Observation.external_id == external_id,
@@ -124,7 +140,8 @@ def find_existing_observation(
 def create_or_update_observation(
     db: Session,
     row: dict,
-) -> tuple[Observation | None, bool, str | None]:
+):
+
     synthea_patient_id = clean_optional_string(
         row.get("PATIENT")
     )
@@ -132,20 +149,25 @@ def create_or_update_observation(
     if synthea_patient_id is None:
         return None, False, "missing_patient_id"
 
+
     patient = find_patient_by_synthea_id(
-        db=db,
-        synthea_patient_id=synthea_patient_id,
+        db,
+        synthea_patient_id
     )
+
 
     if patient is None:
         return None, False, "patient_not_found"
+
 
     observed_at = parse_optional_datetime(
         row.get("DATE")
     )
 
+
     if observed_at is None:
         return None, False, "missing_observation_date"
+
 
     observation_code = clean_optional_string(
         row.get("CODE")
@@ -155,72 +177,120 @@ def create_or_update_observation(
         row.get("DESCRIPTION")
     )
 
+
     if observation_code is None:
         return None, False, "missing_observation_code"
+
 
     if display_name is None:
         return None, False, "missing_description"
 
+
+
     encounter = find_encounter_by_synthea_id(
-        db=db,
-        synthea_encounter_id=row.get("ENCOUNTER"),
+        db,
+        row.get("ENCOUNTER")
     )
+
 
     raw_value = clean_optional_string(
         row.get("VALUE")
     )
 
+
     value_numeric = parse_optional_float(
         raw_value
     )
+
 
     value_text = None
 
     if value_numeric is None:
         value_text = raw_value
 
+
+
     external_id = build_observation_external_id(
-        row=row
+        row
     )
 
-    existing_observation = find_existing_observation(
-        db=db,
-        external_id=external_id,
+
+    existing = find_existing_observation(
+        db,
+        external_id
     )
+
 
     observation_data = {
+
         "patient_id": patient.id,
-        "encounter_id": encounter.id if encounter is not None else None,
+
+        "encounter_id":
+            encounter.id
+            if encounter
+            else None,
+
         "external_id": external_id,
-        "source_system": SYNTHEA_SOURCE_SYSTEM,
-        "category": clean_optional_string(
-            row.get("CATEGORY")
-        ) or "laboratory",
-        "code": observation_code,
-        "code_system": clean_optional_string(
-            row.get("SYSTEM")
-        ) or "LOINC",
-        "display_name": display_name,
-        "value_numeric": value_numeric,
-        "value_text": value_text,
-        "unit": clean_optional_string(
-            row.get("UNITS")
-        ),
-        "reference_range": None,
-        "status": "final",
-        "observed_at": observed_at,
-        "issued_at": observed_at,
+
+        "source_system":
+            SYNTHEA_SOURCE_SYSTEM,
+
+        "category":
+            clean_optional_string(
+                row.get("CATEGORY")
+            )
+            or "laboratory",
+
+        "code":
+            observation_code,
+
+        "code_system":
+            clean_optional_string(
+                row.get("SYSTEM")
+            )
+            or "LOINC",
+
+        "display_name":
+            display_name,
+
+        "value_numeric":
+            value_numeric,
+
+        "value_text":
+            value_text,
+
+        "unit":
+            clean_optional_string(
+                row.get("UNITS")
+            ),
+
+        "reference_range":
+            None,
+
+        "status":
+            "final",
+
+        "observed_at":
+            observed_at,
+
+        "issued_at":
+            observed_at,
     }
 
-    if existing_observation is not None:
-        for field_name, field_value in observation_data.items():
+
+    if existing:
+
+        for key, value in observation_data.items():
+
             setattr(
-                existing_observation,
-                field_name,
-                field_value,
+                existing,
+                key,
+                value
             )
 
-        return existing_observation, False, None
+        return existing, False, None
+
+
 
     observation = Observation(
         **observation_data
@@ -231,50 +301,181 @@ def create_or_update_observation(
     return observation, True, None
 
 
+
 def import_synthea_observations(
     db: Session,
     csv_file_path: Path,
-) -> dict:
-    if not csv_file_path.exists():
-        raise FileNotFoundError(
-            f"File not found: {csv_file_path}"
-        )
+):
 
     created_count = 0
     updated_count = 0
     skipped_count = 0
-    skip_reasons: dict[str, int] = {}
+
+    skip_reasons = {}
+
+    batch_size = 1000
+
+    processed_count = 0
+
+    seen_external_ids = set()
+
+
 
     with csv_file_path.open(
         "r",
         encoding="utf-8-sig",
-        newline="",
-    ) as csv_file:
-        reader = csv.DictReader(csv_file)
+        newline=""
+    ) as file:
+
+
+        reader = csv.DictReader(file)
+
+
 
         for row in reader:
-            _, created, skip_reason = create_or_update_observation(
-                db=db,
-                row=row,
+
+
+            external_id = (
+                build_observation_external_id(row)
             )
 
-            if skip_reason is not None:
+
+            if external_id in seen_external_ids:
+
                 skipped_count += 1
-                skip_reasons[skip_reason] = (
-                    skip_reasons.get(skip_reason, 0) + 1
+
+                skip_reasons[
+                    "duplicate_in_csv"
+                ] = (
+                    skip_reasons.get(
+                        "duplicate_in_csv",
+                        0
+                    )
+                    + 1
                 )
+
                 continue
+
+
+
+            seen_external_ids.add(
+                external_id
+            )
+
+
+
+            _, created, reason = (
+                create_or_update_observation(
+                    db,
+                    row
+                )
+            )
+
+
+            processed_count += 1
+
+
+
+            if reason:
+
+                skipped_count += 1
+
+                skip_reasons[reason] = (
+                    skip_reasons.get(reason, 0)
+                    + 1
+                )
+
+                continue
+
+
 
             if created:
                 created_count += 1
             else:
                 updated_count += 1
 
+
+
+            if processed_count % batch_size == 0:
+
+                db.commit()
+
+                db.expire_all()
+
+                seen_external_ids.clear()
+
+                print(
+                    f"Processed {processed_count} observations..."
+                )
+
+
+
     db.commit()
 
+
+
     return {
+
         "created": created_count,
+
         "updated": updated_count,
+
         "skipped": skipped_count,
-        "skip_reasons": skip_reasons,
+
+        "skip_reasons": skip_reasons
+
     }
+
+
+
+# ==========================================================
+# Standalone execution
+# ==========================================================
+
+
+if __name__ == "__main__":
+
+    from app.db.session import SessionLocal
+
+
+    csv_path = (
+
+        Path(__file__)
+        .resolve()
+        .parents[4]
+
+        / "datasets"
+        / "synthea"
+        / "csv"
+        / "observations.csv"
+
+    )
+
+
+    print(
+        f"Loading Synthea observations file: {csv_path}"
+    )
+
+
+    db = SessionLocal()
+
+
+    try:
+
+        result = import_synthea_observations(
+            db,
+            csv_path
+        )
+
+
+        print(
+            "Synthea observation import completed"
+        )
+
+
+        print(result)
+
+
+    finally:
+
+        db.close()
