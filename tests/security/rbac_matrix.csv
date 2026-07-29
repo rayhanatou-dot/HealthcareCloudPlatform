@@ -1,0 +1,32 @@
+﻿Module,Method,Path,Function,AllowedRoles,SecurityScope,Line
+auth,POST,/login,login,,not_detected,40
+auth,GET,/me,read_current_user,,not_detected,159
+diagnostic_reports,POST,,create_diagnostic_report,"Admin, Doctor, Lab Staff",route,57
+diagnostic_reports,GET,/{report_id},get_diagnostic_report,"Admin, Data Manager, Doctor, Lab Staff, Nurse",route,238
+diagnostic_reports,GET,/{report_id}/download,download_diagnostic_report,"Admin, Doctor, Lab Staff, Nurse",route,295
+encounters,POST,,create_encounter,"Admin, Data Manager, Doctor, Nurse",route,37
+encounters,GET,,list_encounters,"Admin, Data Manager, Doctor, Lab Staff, Nurse",route,98
+encounters,GET,/{encounter_id},get_encounter,"Admin, Data Manager, Doctor, Lab Staff, Nurse",route,178
+encounters,PATCH,/{encounter_id},update_encounter,"Admin, Data Manager, Doctor, Nurse",route,223
+fhir,GET,/metadata,metadata,"Admin, Data Manager, Doctor, Nurse, Pharmacist",router,225
+fhir,GET,/Patient,search_patient,"Admin, Data Manager, Doctor, Nurse, Pharmacist",router,266
+fhir,GET,/Patient/{patient_id},get_patient,"Admin, Data Manager, Doctor, Nurse, Pharmacist",router,349
+fhir,GET,/Patient/{patient_id}/$everything,everything,"Admin, Data Manager, Doctor, Nurse, Pharmacist",router,394
+fhir,GET,/Encounter/{encounter_id},get_encounter,"Admin, Data Manager, Doctor, Nurse, Pharmacist",router,572
+fhir,GET,/Observation,search_observation,"Admin, Data Manager, Doctor, Nurse, Pharmacist",router,620
+fhir,GET,/Observation/{observation_id},get_observation,"Admin, Data Manager, Doctor, Nurse, Pharmacist",router,713
+fhir,GET,/MedicationRequest/{prescription_id},get_medication,"Admin, Data Manager, Doctor, Nurse, Pharmacist",router,763
+fhir_conditions,GET,/Condition,search_fhir_conditions,"Admin, Data Manager, Doctor, Nurse",router,96
+fhir_conditions,GET,/Condition/{condition_id},get_fhir_condition,"Admin, Data Manager, Doctor, Nurse",router,150
+observations,POST,,create_observation,"Admin, Data Manager, Doctor, Lab Staff, Nurse",route,38
+observations,GET,,list_observations,"Admin, Data Manager, Doctor, Lab Staff, Nurse",route,123
+observations,GET,/{observation_id},get_observation,"Admin, Data Manager, Doctor, Lab Staff, Nurse",route,229
+observations,PATCH,/{observation_id},update_observation,"Admin, Data Manager, Doctor, Lab Staff, Nurse",route,275
+patients,POST,,create_patient,"Admin, Data Manager, Nurse",route,38
+patients,GET,,list_patients,"Admin, Data Manager, Doctor, Lab Staff, Nurse",route,99
+patients,GET,/{patient_id},get_patient,"Admin, Data Manager, Doctor, Lab Staff, Nurse",route,166
+patients,PATCH,/{patient_id},update_patient,"Admin, Data Manager, Nurse",route,220
+prescriptions,POST,,create_prescription,"Admin, Doctor",route,111
+prescriptions,GET,,list_prescriptions,"Admin, Data Manager, Doctor, Nurse, Pharmacist",route,184
+prescriptions,GET,/{prescription_id},get_prescription,"Admin, Data Manager, Doctor, Nurse, Pharmacist",route,302
+prescriptions,PATCH,/{prescription_id},update_prescription,"Admin, Doctor, Pharmacist",route,349
