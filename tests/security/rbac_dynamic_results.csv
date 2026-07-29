@@ -1,0 +1,22 @@
+﻿Test,Endpoint,Role,Username,ExpectedStatus,ActualStatus,Passed
+FHIR Condition read,/api/v1/fhir/Condition/1,Unauthenticated,,401,401,True
+FHIR Condition read,/api/v1/fhir/Condition/1,Admin,demo_admin,200,200,True
+FHIR Condition read,/api/v1/fhir/Condition/1,Doctor,demo_doctor,200,200,True
+FHIR Condition read,/api/v1/fhir/Condition/1,Nurse,demo_nurse,200,200,True
+FHIR Condition read,/api/v1/fhir/Condition/1,Lab Staff,demo_lab_staff,403,403,True
+FHIR Condition read,/api/v1/fhir/Condition/1,Pharmacist,demo_pharmacist,403,403,True
+FHIR Condition read,/api/v1/fhir/Condition/1,Data Manager,demo_data_manager,200,200,True
+FHIR Patient read,/api/v1/fhir/Patient/1192,Unauthenticated,,401,401,True
+FHIR Patient read,/api/v1/fhir/Patient/1192,Admin,demo_admin,200,200,True
+FHIR Patient read,/api/v1/fhir/Patient/1192,Doctor,demo_doctor,200,200,True
+FHIR Patient read,/api/v1/fhir/Patient/1192,Nurse,demo_nurse,200,200,True
+FHIR Patient read,/api/v1/fhir/Patient/1192,Lab Staff,demo_lab_staff,403,403,True
+FHIR Patient read,/api/v1/fhir/Patient/1192,Pharmacist,demo_pharmacist,200,200,True
+FHIR Patient read,/api/v1/fhir/Patient/1192,Data Manager,demo_data_manager,200,200,True
+Clinical Patient read,/api/v1/patients/1192,Unauthenticated,,401,401,True
+Clinical Patient read,/api/v1/patients/1192,Admin,demo_admin,200,200,True
+Clinical Patient read,/api/v1/patients/1192,Doctor,demo_doctor,200,200,True
+Clinical Patient read,/api/v1/patients/1192,Nurse,demo_nurse,200,200,True
+Clinical Patient read,/api/v1/patients/1192,Lab Staff,demo_lab_staff,200,200,True
+Clinical Patient read,/api/v1/patients/1192,Pharmacist,demo_pharmacist,403,403,True
+Clinical Patient read,/api/v1/patients/1192,Data Manager,demo_data_manager,200,200,True

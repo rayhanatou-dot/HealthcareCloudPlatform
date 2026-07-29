@@ -1,0 +1,7 @@
+﻿"Username","LoginStatus","PasswordSource","HttpStatus"
+"demo_admin","SUCCESS","DEMO_ADMIN_PASSWORD","200"
+"demo_doctor","SUCCESS","DEMO_ADMIN_PASSWORD","200"
+"demo_nurse","SUCCESS","DEMO_ADMIN_PASSWORD","200"
+"demo_lab_staff","SUCCESS","DEMO_ADMIN_PASSWORD","200"
+"demo_pharmacist","SUCCESS","DEMO_ADMIN_PASSWORD","200"
+"demo_data_manager","SUCCESS","DEMO_ADMIN_PASSWORD","200"
