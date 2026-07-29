@@ -9,12 +9,10 @@ from app.core.config import settings
 
 class StorageService:
     """
-    Provides object-storage access for the
-    Healthcare Cloud Platform.
+    Provide object-storage access for the Healthcare Cloud Platform.
 
-    PostgreSQL stores structured metadata, while
-    MinIO stores binary healthcare objects such as
-    diagnostic reports and related attachments.
+    PostgreSQL stores structured metadata, while MinIO stores binary
+    healthcare objects such as diagnostic reports and attachments.
     """
 
     def __init__(self) -> None:
@@ -29,12 +27,15 @@ class StorageService:
 
     def ensure_bucket(self) -> None:
         """
-        Ensure that the configured healthcare object-storage
-        bucket exists before upload or retrieval operations.
+        Ensure that the configured bucket exists.
         """
         try:
-            if not self.client.bucket_exists(self.bucket_name):
-                self.client.make_bucket(self.bucket_name)
+            if not self.client.bucket_exists(
+                self.bucket_name
+            ):
+                self.client.make_bucket(
+                    self.bucket_name
+                )
 
         except S3Error as exc:
             raise RuntimeError(
@@ -43,7 +44,7 @@ class StorageService:
 
     def is_ready(self) -> bool:
         """
-        Verify that the configured bucket is accessible.
+        Return True when the configured bucket is accessible.
         """
         try:
             return self.client.bucket_exists(
@@ -62,10 +63,11 @@ class StorageService:
         content_type: str = "application/octet-stream",
     ) -> dict[str, str | int]:
         """
-        Upload binary data to MinIO and return metadata
-        required for PostgreSQL persistence.
+        Upload binary data and return persistence metadata.
         """
-        if not object_key.strip():
+        normalized_key = object_key.strip()
+
+        if not normalized_key:
             raise ValueError(
                 "object_key must not be empty"
             )
@@ -83,7 +85,7 @@ class StorageService:
         try:
             self.client.put_object(
                 bucket_name=self.bucket_name,
-                object_name=object_key,
+                object_name=normalized_key,
                 data=BytesIO(data),
                 length=file_size,
                 content_type=content_type,
@@ -91,12 +93,12 @@ class StorageService:
 
         except S3Error as exc:
             raise RuntimeError(
-                f"Unable to upload object: {object_key}"
+                f"Unable to upload object: {normalized_key}"
             ) from exc
 
         return {
             "bucket_name": self.bucket_name,
-            "object_key": object_key,
+            "object_key": normalized_key,
             "content_type": content_type,
             "file_size_bytes": file_size,
             "checksum_sha256": checksum,
@@ -109,7 +111,9 @@ class StorageService:
         """
         Download an object from MinIO as bytes.
         """
-        if not object_key.strip():
+        normalized_key = object_key.strip()
+
+        if not normalized_key:
             raise ValueError(
                 "object_key must not be empty"
             )
@@ -119,14 +123,14 @@ class StorageService:
         try:
             response = self.client.get_object(
                 bucket_name=self.bucket_name,
-                object_name=object_key,
+                object_name=normalized_key,
             )
 
             return response.read()
 
         except S3Error as exc:
             raise RuntimeError(
-                f"Unable to download object: {object_key}"
+                f"Unable to download object: {normalized_key}"
             ) from exc
 
         finally:
@@ -140,9 +144,15 @@ class StorageService:
         expected_sha256: str,
     ) -> bool:
         """
-        Download an object, recompute its SHA-256 digest,
-        and compare it with the expected checksum.
+        Compare the downloaded object's SHA-256 with an expected digest.
         """
+        normalized_checksum = expected_sha256.strip().lower()
+
+        if not normalized_checksum:
+            raise ValueError(
+                "expected_sha256 must not be empty"
+            )
+
         downloaded_data = self.download_bytes(
             object_key
         )
@@ -151,7 +161,7 @@ class StorageService:
             downloaded_data
         ).hexdigest()
 
-        return actual_sha256 == expected_sha256
+        return actual_sha256 == normalized_checksum
 
     def delete_object(
         self,
@@ -160,11 +170,12 @@ class StorageService:
         """
         Delete an object from MinIO.
 
-        This method supports compensating cleanup when
-        object upload succeeds but PostgreSQL persistence
-        fails.
+        This supports compensating cleanup when an object upload succeeds
+        but PostgreSQL persistence fails.
         """
-        if not object_key.strip():
+        normalized_key = object_key.strip()
+
+        if not normalized_key:
             raise ValueError(
                 "object_key must not be empty"
             )
@@ -172,13 +183,13 @@ class StorageService:
         try:
             self.client.remove_object(
                 bucket_name=self.bucket_name,
-                object_name=object_key,
+                object_name=normalized_key,
             )
 
         except S3Error as exc:
             raise RuntimeError(
-                f"Unable to delete object: {object_key}"
+                f"Unable to delete object: {normalized_key}"
             ) from exc
-        
-storage_service = StorageService()
 
+
+storage_service = StorageService()
