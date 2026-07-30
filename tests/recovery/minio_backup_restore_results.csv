@@ -1,0 +1,24 @@
+﻿Test,Expected,Actual,Passed
+Source bucket accessible,present,present,True
+Source object inventory,completed,7 objects,True
+Backup object 1/7,77 bytes,77 bytes,True
+Backup object 2/7,97 bytes,97 bytes,True
+Backup object 3/7,77 bytes,77 bytes,True
+Backup object 4/7,77 bytes,77 bytes,True
+Backup object 5/7,46 bytes,46 bytes,True
+Backup object 6/7,57 bytes,57 bytes,True
+Backup object 7/7,57 bytes,57 bytes,True
+Backup object count,7,7,True
+Backup total size,488,488,True
+Temporary bucket creation,created,created,True
+Restored object count,7,7,True
+Restored total size,488,488,True
+Restore integrity 1/7,8e13b3b62dcfcd5e2fc915878aa78c8cc3d19f865e0092b0c2ca34961f21b229,8e13b3b62dcfcd5e2fc915878aa78c8cc3d19f865e0092b0c2ca34961f21b229,True
+Restore integrity 2/7,733a5f7961289e7ad23bce28bb3f87f59d397567ed8b9dbd88d304d80072dba5,733a5f7961289e7ad23bce28bb3f87f59d397567ed8b9dbd88d304d80072dba5,True
+Restore integrity 3/7,8e13b3b62dcfcd5e2fc915878aa78c8cc3d19f865e0092b0c2ca34961f21b229,8e13b3b62dcfcd5e2fc915878aa78c8cc3d19f865e0092b0c2ca34961f21b229,True
+Restore integrity 4/7,8e13b3b62dcfcd5e2fc915878aa78c8cc3d19f865e0092b0c2ca34961f21b229,8e13b3b62dcfcd5e2fc915878aa78c8cc3d19f865e0092b0c2ca34961f21b229,True
+Restore integrity 5/7,476559fb6977b2b04b35192d310f973e83158ed66b39dc60dec391f30bfaf2b8,476559fb6977b2b04b35192d310f973e83158ed66b39dc60dec391f30bfaf2b8,True
+Restore integrity 6/7,75e916658673c9e271563c8a2054355c184b85583fd5ab7ec25990f990e52a9e,75e916658673c9e271563c8a2054355c184b85583fd5ab7ec25990f990e52a9e,True
+Restore integrity 7/7,75e916658673c9e271563c8a2054355c184b85583fd5ab7ec25990f990e52a9e,75e916658673c9e271563c8a2054355c184b85583fd5ab7ec25990f990e52a9e,True
+All restored objects verified,7,7,True
+Temporary bucket cleanup,removed,removed,True

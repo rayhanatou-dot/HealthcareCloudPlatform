@@ -1,0 +1,20 @@
+﻿Test,Expected,Actual,Passed
+PostgreSQL container,running,running,True
+Backup file created,non-empty file,52847810 bytes,True
+Backup SHA-256,64 hexadecimal characters,2ccded46a6fd14c6ec584bf2bed7fee4c82f37518b5908295ec7184430bbaec3,True
+Archive readability,readable pg_restore archive,readable,True
+Temporary restore,successful,successful,True
+Public table count,10,10,True
+Constraint count,30,30,True
+Index count,50,50,True
+Rows: alembic_version,1,1,True
+Rows: audit_logs,40557,40557,True
+Rows: conditions,643513,643513,True
+Rows: diagnostic_reports,5,5,True
+Rows: encounters,121649,121649,True
+Rows: observations,592173,592173,True
+Rows: patients,117581,117581,True
+Rows: prescriptions,66458,66458,True
+Rows: roles,6,6,True
+Rows: users,6,6,True
+Temporary database cleanup,removed,removed,True

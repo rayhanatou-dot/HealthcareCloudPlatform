@@ -26,3 +26,5 @@ htmlcov/
 datasets/mimic-iv-demo/
 
 datasets/cms-de-synpuf/
+tests/recovery/*.dump
+tests/recovery/minio_backup_*/

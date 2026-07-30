@@ -1,0 +1,13 @@
+PostgreSQL Backup and Restore Validation
+========================================
+Source database: healthcare_cloud_db
+Restore database: healthcare_cloud_db_restore_test
+Backup file: C:\Users\ASUS\healthcare-cloud-platform\tests\recovery\healthcare_cloud_db_20260730_094957.dump
+Backup size: 52847810 bytes
+SHA-256: 2ccded46a6fd14c6ec584bf2bed7fee4c82f37518b5908295ec7184430bbaec3
+Tables verified: 10
+Tables matched: 10
+Total checks: 19
+Passed checks: 19
+Failed checks: 0
+Temporary restore database removed: True

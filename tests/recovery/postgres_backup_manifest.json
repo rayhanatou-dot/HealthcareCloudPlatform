@@ -1,0 +1,16 @@
+{
+  "created_at_utc": "2026-07-30T09:49:57.223961+00:00",
+  "source_database": "healthcare_cloud_db",
+  "restore_database": "healthcare_cloud_db_restore_test",
+  "postgres_user": "healthcare_user",
+  "backup_file": "C:\\Users\\ASUS\\healthcare-cloud-platform\\tests\\recovery\\healthcare_cloud_db_20260730_094957.dump",
+  "backup_size_bytes": 52847810,
+  "backup_sha256": "2ccded46a6fd14c6ec584bf2bed7fee4c82f37518b5908295ec7184430bbaec3",
+  "public_table_count": 10,
+  "constraint_count": 30,
+  "index_count": 50,
+  "tables_verified": 10,
+  "tables_matched": 10,
+  "mismatched_tables": [],
+  "restore_database_removed": true
+}

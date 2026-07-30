@@ -1,0 +1,13 @@
+MinIO Backup and Restore Validation
+===================================
+Endpoint: localhost:9000
+Source bucket: healthcare-files
+Source objects: 7
+Source size: 488 bytes
+Restored objects: 7
+Restored size: 488 bytes
+Backup directory: C:\Users\ASUS\healthcare-cloud-platform\tests\recovery\minio_backup_20260730_100225
+Temporary bucket removed: True
+Total checks: 23
+Passed checks: 23
+Failed checks: 0
