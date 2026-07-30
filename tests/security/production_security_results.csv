@@ -1,10 +1,18 @@
-﻿"Test","Expected","Actual","Passed"
-"X-Content-Type-Options","nosniff","nosniff","True"
-"X-Frame-Options","DENY","DENY","True"
-"Content-Security-Policy","present","present","True"
-"Strict-Transport-Security","present","present","True"
-"Uvicorn server header","absent","absent","True"
-"Swagger disabled","404","404","True"
-"OpenAPI schema disabled","404","404","True"
-"ReDoc disabled","404","404","True"
-"Untrusted Host rejected","400","400","True"
+﻿Test,Expected,Actual,Passed
+Backend health,HTTP 200,HTTP 200,True
+X-Content-Type-Options,nosniff,nosniff,True
+X-Frame-Options,DENY,DENY,True
+Referrer-Policy,no-referrer,no-referrer,True
+Content-Security-Policy,present,default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none',True
+Permissions-Policy,present,"camera=(), microphone=(), geolocation=()",True
+Strict-Transport-Security,present,max-age=31536000; includeSubDomains,True
+Cache-Control,contains no-store,no-store,True
+Server disclosure,uvicorn not disclosed,absent,True
+Production route /docs,HTTP 404,HTTP 404,True
+Production route /redoc,HTTP 404,HTTP 404,True
+Production route /openapi.json,HTTP 404,HTTP 404,True
+Trusted CORS origin,http://localhost:3000,http://localhost:3000,True
+Untrusted CORS origin,not allowed,not allowed,True
+Trusted Host,HTTP 200,HTTP 200,True
+Untrusted Host,HTTP 400,HTTP 400,True
+Development configuration restored,healthy,healthy,True
