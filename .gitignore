@@ -1,0 +1,50 @@
+.env
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.venv/
+venv/
+env/
+
+.vscode/
+.idea/
+
+.DS_Store
+Thumbs.db
+
+*.log
+
+datasets/raw/
+datasets/large/
+
+.pytest_cache/
+.coverage
+htmlcov/
+datasets/mimic-iv-demo/
+
+datasets/cms-de-synpuf/
+tests/recovery/*.dump
+tests/recovery/minio_backup_*/
+# Local IDE metadata
+.vs/
+# Accidental application backup
+app_accidental_backup/
+# Local Synthea installation
+tools/synthea/
+# Disaster-recovery backup payloads
+tests/recovery/backups/
+# Temporary test downloads
+audit-download-test.txt
+diagnostic-report-rbac-test.txt
+downloaded-rbac-report-by-nurse.txt
+downloaded-report.txt
+rbac-downloaded-report.txt
+swagger-report.txt
+# Malformed duplicate download
+tests/final_validation/*-platform
+# Local audit files
+git_remaining_changes_*.txt
+.gitignore.proposed
