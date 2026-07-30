@@ -16,24 +16,39 @@ E2E_TEST = (
     / "test_diagnostic_report_e2e.py"
 )
 OUTPUT_DIR = PROJECT_ROOT / "tests" / "security"
-AUDIT_ROWS_JSON = OUTPUT_DIR / "diagnostic_report_audit_rows.json"
-AUDIT_ROWS_CSV = OUTPUT_DIR / "diagnostic_report_audit_rows.csv"
-RESULTS_CSV = OUTPUT_DIR / "diagnostic_report_audit_results.csv"
+AUDIT_ROWS_JSON = (
+    OUTPUT_DIR
+    / "diagnostic_report_audit_rows.json"
+)
+AUDIT_ROWS_CSV = (
+    OUTPUT_DIR
+    / "diagnostic_report_audit_rows.csv"
+)
+RESULTS_CSV = (
+    OUTPUT_DIR
+    / "diagnostic_report_audit_results.csv"
+)
 
 POSTGRES_USER = "healthcare_user"
 POSTGRES_DB = "healthcare_cloud_db"
 
+EXPECTED_ACTIONS = {
+    "LOGIN_SUCCESS",
+    "REPORT_UPLOAD",
+    "REPORT_READ",
+    "REPORT_DOWNLOAD",
+    "ACCESS_DENIED",
+}
+
 
 def run_command(
     command: list[str],
-    *,
-    capture: bool = True,
 ) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         command,
         cwd=PROJECT_ROOT,
         text=True,
-        capture_output=capture,
+        capture_output=True,
         check=False,
     )
 
@@ -68,30 +83,9 @@ def psql_scalar(sql: str) -> str:
     return completed.stdout.strip()
 
 
-def add_result(
-    results: list[dict[str, Any]],
-    test: str,
-    expected: str,
-    actual: str,
-    passed: bool,
-) -> None:
-    results.append(
-        {
-            "Test": test,
-            "Expected": expected,
-            "Actual": actual,
-            "Passed": passed,
-        }
-    )
-
-    state = "PASS" if passed else "FAIL"
-    print(
-        f"{test:<38} {state} "
-        f"(expected {expected}, got {actual})"
-    )
-
-
-def action_value(row: dict[str, Any]) -> str:
+def normalize_action(
+    row: dict[str, Any],
+) -> str:
     for key in (
         "action",
         "event_type",
@@ -102,7 +96,7 @@ def action_value(row: dict[str, Any]) -> str:
         value = row.get(key)
 
         if value is not None:
-            return str(value)
+            return str(value).strip().upper()
 
     return ""
 
@@ -121,6 +115,29 @@ def flatten_value(value: Any) -> str:
     return str(value)
 
 
+def add_result(
+    results: list[dict[str, Any]],
+    test: str,
+    expected: str,
+    actual: str,
+    passed: bool,
+) -> None:
+    results.append(
+        {
+            "Test": test,
+            "Expected": expected,
+            "Actual": actual,
+            "Passed": passed,
+        }
+    )
+
+    print(
+        f"{test:<38} "
+        f"{'PASS' if passed else 'FAIL'} "
+        f"(expected {expected}, got {actual})"
+    )
+
+
 def main() -> int:
     OUTPUT_DIR.mkdir(
         parents=True,
@@ -132,12 +149,12 @@ def main() -> int:
             f"Missing E2E test: {E2E_TEST}"
         )
 
-    before_audit_id_text = psql_scalar(
-        "SELECT COALESCE(MAX(id), 0) "
-        "FROM audit_logs;"
-    )
     before_audit_id = int(
-        before_audit_id_text or "0"
+        psql_scalar(
+            "SELECT COALESCE(MAX(id), 0) "
+            "FROM audit_logs;"
+        )
+        or "0"
     )
 
     before_report_count = int(
@@ -147,7 +164,9 @@ def main() -> int:
         )
     )
 
-    print("=== RUNNING DIAGNOSTIC REPORT E2E ===")
+    print(
+        "=== RUNNING DIAGNOSTIC REPORT E2E ==="
+    )
 
     e2e = run_command(
         [
@@ -185,8 +204,10 @@ def main() -> int:
         ") AS t;"
     )
 
-    audit_rows = json.loads(
-        audit_json_text or "[]"
+    audit_rows: list[dict[str, Any]] = (
+        json.loads(
+            audit_json_text or "[]"
+        )
     )
 
     AUDIT_ROWS_JSON.write_text(
@@ -202,7 +223,7 @@ def main() -> int:
         {
             key
             for row in audit_rows
-            for key in row.keys()
+            for key in row
         }
     )
 
@@ -232,18 +253,16 @@ def main() -> int:
                 "message\nNo new audit rows\n"
             )
 
+    actions = {
+        normalize_action(row)
+        for row in audit_rows
+        if normalize_action(row)
+    }
+
     serialized_rows = json.dumps(
         audit_rows,
         ensure_ascii=False,
     ).lower()
-
-    detected_actions = sorted(
-        {
-            action_value(row)
-            for row in audit_rows
-            if action_value(row)
-        }
-    )
 
     results: list[dict[str, Any]] = []
 
@@ -258,55 +277,34 @@ def main() -> int:
     add_result(
         results,
         "New audit records",
-        "at least 1",
+        "at least 6",
         str(len(audit_rows)),
-        len(audit_rows) >= 1,
+        len(audit_rows) >= 6,
     )
 
-    has_login_success = (
-        "login_success" in serialized_rows
-        or "login success" in serialized_rows
-    )
+    for expected_action in sorted(
+        EXPECTED_ACTIONS
+    ):
+        add_result(
+            results,
+            f"Audit action {expected_action}",
+            "present",
+            (
+                "present"
+                if expected_action in actions
+                else "missing"
+            ),
+            expected_action in actions,
+        )
 
-    add_result(
-        results,
-        "Successful login audit",
-        "present",
-        (
-            "present"
-            if has_login_success
-            else "missing"
-        ),
-        has_login_success,
-    )
-
-    has_access_denied = any(
+    has_context = any(
         token in serialized_rows
         for token in (
-            "access_denied",
-            "access denied",
-            '"status_code": 403',
-            '"status": 403',
+            "diagnosticreport",
+            "diagnostic_report",
+            "diagnostic-report",
+            "diagnostic report",
         )
-    )
-
-    add_result(
-        results,
-        "Denied access audit",
-        "present",
-        (
-            "present"
-            if has_access_denied
-            else "missing"
-        ),
-        has_access_denied,
-    )
-
-    has_diagnostic_report = (
-        "diagnostic_report" in serialized_rows
-        or "diagnostic-report" in serialized_rows
-        or "diagnostic report" in serialized_rows
-        or "diagnostic_reports" in serialized_rows
     )
 
     add_result(
@@ -315,33 +313,10 @@ def main() -> int:
         "present",
         (
             "present"
-            if has_diagnostic_report
+            if has_context
             else "missing"
         ),
-        has_diagnostic_report,
-    )
-
-    has_read_or_download = any(
-        token in serialized_rows
-        for token in (
-            "download",
-            "_read",
-            " read",
-            '"method": "get"',
-            '"http_method": "get"',
-        )
-    )
-
-    add_result(
-        results,
-        "Read or download audit",
-        "present",
-        (
-            "present"
-            if has_read_or_download
-            else "missing"
-        ),
-        has_read_or_download,
+        has_context,
     )
 
     add_result(
@@ -378,13 +353,8 @@ def main() -> int:
 
     print("\n=== NEW AUDIT ACTIONS ===")
 
-    if detected_actions:
-        for action in detected_actions:
-            print(action)
-    else:
-        print(
-            "No action/event column was detected."
-        )
+    for action in sorted(actions):
+        print(action)
 
     print(
         "\n=== DIAGNOSTIC REPORT AUDIT SUMMARY ==="

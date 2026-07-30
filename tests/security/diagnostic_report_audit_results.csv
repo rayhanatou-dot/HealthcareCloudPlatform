@@ -1,8 +1,10 @@
 ﻿Test,Expected,Actual,Passed
 Diagnostic report E2E test,exit code 0,exit code 0,True
-New audit records,at least 1,6,True
-Successful login audit,present,present,True
-Denied access audit,present,present,True
+New audit records,at least 6,6,True
+Audit action ACCESS_DENIED,present,present,True
+Audit action LOGIN_SUCCESS,present,present,True
+Audit action REPORT_DOWNLOAD,present,present,True
+Audit action REPORT_READ,present,present,True
+Audit action REPORT_UPLOAD,present,present,True
 Diagnostic report audit context,present,present,True
-Read or download audit,present,present,True
 Diagnostic report cleanup,5,5,True
