@@ -1,0 +1,11 @@
+﻿Test,Expected,Actual,Passed
+Authorized report upload,200 or 201,201,True
+Authorized metadata read,200,200,True
+PostgreSQL metadata row,present,present,True
+Database checksum,0d8174402480a262d8e2a3d3ccb13291b228ab0523b3768cab71b4df2c9ef5f8,0d8174402480a262d8e2a3d3ccb13291b228ab0523b3768cab71b4df2c9ef5f8,True
+Database file size,67,67,True
+MinIO object integrity,0d8174402480a262d8e2a3d3ccb13291b228ab0523b3768cab71b4df2c9ef5f8,0d8174402480a262d8e2a3d3ccb13291b228ab0523b3768cab71b4df2c9ef5f8,True
+Authorized file download,200 and matching bytes,200 and matching,True
+Download without JWT,401,401,True
+Pharmacist download denied,403,403,True
+Post-test cleanup,5,5,True
