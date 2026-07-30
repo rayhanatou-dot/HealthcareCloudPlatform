@@ -1,0 +1,6 @@
+﻿scenario,concurrent_users,request_count,failure_count,failure_rate_pct,average_response_ms,p95_response_ms,p99_response_ms,requests_per_second,successful_requests_per_second,latency_adjusted_efficiency,backend_cpu_pct,backend_memory_mib,successful_rps_per_cpu_pct,successful_rps_per_gib,resource_source
+10 users,10,465,0,0.0,26.72,71.0,290.0,7.94,7.94,7.7334,,,,,
+50 users,50,4557,0,0.0,19.48,59.0,230.0,38.35,38.35,37.6172,36.66,82.59,1.0461,475.49,docker_stats_50_users.txt
+100 users,100,13695,0,0.0,39.27,130.0,450.0,76.46,76.46,73.5709,288.31,87.42,0.2652,895.62,docker_stats_100_users.txt
+200 users initial,200,1488,357,23.9919,33132.66,90000.0,91000.0,5.23,3.98,0.1165,,,,,
+200 users optimized,200,43814,0,0.0,29.27,110.0,240.0,146.77,146.77,142.5962,0.35,102.1,419.3429,1472.01,docker_stats_200_users.txt

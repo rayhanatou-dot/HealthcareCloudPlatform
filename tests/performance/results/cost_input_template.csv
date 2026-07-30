@@ -1,0 +1,6 @@
+﻿scenario,concurrent_users,monthly_infrastructure_cost_usd,monthly_operations_cost_usd,monthly_total_cost_usd,successful_requests_per_second,estimated_successful_requests_per_month,cost_per_million_successful_requests_usd,notes
+10 users,10,,,,7.94,20580480.0,,Enter measured or quoted monthly costs. Do not treat maximum-load RPS as continuous production demand without a utilization model.
+50 users,50,,,,38.35,99403200.0,,Enter measured or quoted monthly costs. Do not treat maximum-load RPS as continuous production demand without a utilization model.
+100 users,100,,,,76.46,198184320.0,,Enter measured or quoted monthly costs. Do not treat maximum-load RPS as continuous production demand without a utilization model.
+200 users initial,200,,,,3.98,10316160.0,,Enter measured or quoted monthly costs. Do not treat maximum-load RPS as continuous production demand without a utilization model.
+200 users optimized,200,,,,146.77,380427840.0,,Enter measured or quoted monthly costs. Do not treat maximum-load RPS as continuous production demand without a utilization model.
