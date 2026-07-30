@@ -48,3 +48,7 @@ tests/final_validation/*-platform
 # Local audit files
 git_remaining_changes_*.txt
 .gitignore.proposed
+datasets/synthea/csv/*.csv
+tests/performance/results/*.html
+tests/performance/results/*_history.csv
+tests/performance/results/*_exceptions.csv
