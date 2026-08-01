@@ -1,0 +1,87 @@
+﻿services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: healthcare_prod_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - edge
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: healthcare_prod_backend
+    env_file:
+      - .env.production
+    expose:
+      - "8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_started
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=5)"
+        ]
+      interval: 15s
+      timeout: 7s
+      retries: 5
+      start_period: 20s
+    networks:
+      - edge
+      - data
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16
+    container_name: healthcare_prod_postgres
+    env_file:
+      - .env.production
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U healthcare_prod_user -d healthcare_cloud_db"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - data
+    restart: unless-stopped
+
+  minio:
+    image: minio/minio:latest
+    container_name: healthcare_prod_minio
+    command: server /data --console-address ":9001"
+    env_file:
+      - .env.production
+    volumes:
+      - minio_prod_data:/data
+    networks:
+      - data
+    restart: unless-stopped
+
+volumes:
+  postgres_prod_data:
+  minio_prod_data:
+
+networks:
+  edge:
+  data:
+    internal: true

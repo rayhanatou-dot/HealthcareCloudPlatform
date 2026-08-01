@@ -52,3 +52,5 @@ datasets/synthea/csv/*.csv
 tests/performance/results/*.html
 tests/performance/results/*_history.csv
 tests/performance/results/*_exceptions.csv
+.env.production
+*.backup_*
