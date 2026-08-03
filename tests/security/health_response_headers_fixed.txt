@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+date: Wed, 29 Jul 2026 10:16:54 GMT
+content-length: 58
+content-type: application/json
+x-content-type-options: nosniff
+x-frame-options: DENY
+referrer-policy: no-referrer
+permissions-policy: camera=(), microphone=(), geolocation=()
+cache-control: no-store
+content-security-policy: default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'
+

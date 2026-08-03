@@ -1,0 +1,14 @@
+     table_name     | seq_scan | idx_scan | estimated_rows 
+--------------------+----------+----------+----------------
+ conditions         |       20 |   719873 |         643513
+ observations       |        7 |     4561 |         592173
+ encounters         |       10 |   821213 |         121649
+ patients           |        7 |   975779 |         117581
+ prescriptions      |        5 |     4561 |          66458
+ audit_logs         |        0 |      562 |          40462
+ roles              |        0 |    59458 |              6
+ users              |        0 |    60021 |              6
+ diagnostic_reports |        2 |        0 |              5
+ alembic_version    |        3 |        1 |              1
+(10 rows)
+

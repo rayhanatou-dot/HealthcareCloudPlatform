@@ -1,0 +1,3 @@
+Test,Expected,Actual,Passed
+Bucket existence,True,True,True
+Bucket access,No error,7 objects found,True

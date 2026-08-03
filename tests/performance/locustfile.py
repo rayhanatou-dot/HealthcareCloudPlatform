@@ -1,103 +1,118 @@
+from __future__ import annotations
+
 import os
+from typing import Any
 
 from locust import HttpUser, between, task
 
 
-class HealthcarePlatformUser(HttpUser):
-    wait_time = between(1, 3)
+class HealthcareApiUser(HttpUser):
+    """Load-test user for the healthcare platform API."""
 
-    def on_start(self):
-        self.username = os.getenv(
-            "LOCUST_USERNAME",
-            "demo_admin",
-        )
+    wait_time = between(0.5, 2.0)
 
-        self.password = os.getenv(
-            "LOCUST_PASSWORD",
-            "ChangeMe123!",
-        )
+    def on_start(self) -> None:
+        """Authenticate once and store the bearer token."""
 
-        self.auth_headers = {}
+        username = os.getenv("LOADTEST_USERNAME", "demo_admin")
+        password = os.getenv("LOADTEST_PASSWORD")
 
-        self.login()
+        if not password:
+            raise RuntimeError(
+                "LOADTEST_PASSWORD is required before starting Locust."
+            )
 
-    def login(self):
         with self.client.post(
             "/api/v1/auth/login",
             data={
-                "username": self.username,
-                "password": self.password,
+                "username": username,
+                "password": password,
             },
             headers={
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/x-www-form-urlencoded"
             },
             name="POST /api/v1/auth/login",
             catch_response=True,
         ) as response:
             if response.status_code != 200:
                 response.failure(
-                    f"Login failed with status {response.status_code}: "
-                    f"{response.text}"
+                    f"Authentication failed: {response.status_code}"
                 )
-                return
+                raise RuntimeError(
+                    "Locust could not authenticate the test user."
+                )
 
-            try:
-                token = response.json().get(
-                    "access_token"
-                )
-            except Exception as exc:
+            payload: dict[str, Any] = response.json()
+            access_token = payload.get("access_token")
+
+            if not access_token:
                 response.failure(
-                    f"Login response JSON parsing failed: {exc}"
+                    "Authentication response has no access token."
                 )
-                return
-
-            if not token:
-                response.failure(
-                    "Login response did not contain access_token"
+                raise RuntimeError(
+                    "Authentication response has no access token."
                 )
-                return
 
-            self.auth_headers = {
-                "Authorization": f"Bearer {token}"
-            }
-
-            response.success()
+            self.client.headers.update(
+                {
+                    "Authorization": f"Bearer {access_token}",
+                    "Accept": "application/json",
+                }
+            )
 
     @task(1)
-    def health_check(self):
+    def health_check(self) -> None:
+        """Check the public health endpoint."""
+
         self.client.get(
             "/health",
             name="GET /health",
         )
 
     @task(4)
-    def list_patients(self):
+    def read_patient(self) -> None:
+        """Read one known patient."""
+
         self.client.get(
-            "/api/v1/patients?skip=0&limit=20",
-            headers=self.auth_headers,
-            name="GET /api/v1/patients",
+            "/api/v1/fhir/Patient/1192",
+            name="GET /api/v1/fhir/Patient/{id}",
         )
 
-    @task(3)
-    def list_encounters(self):
-        self.client.get(
-            "/api/v1/encounters?skip=0&limit=20",
-            headers=self.auth_headers,
-            name="GET /api/v1/encounters",
-        )
+    @task(1)
+    def read_patient_everything(self) -> None:
+        """Read the aggregated clinical record for one patient."""
 
-    @task(3)
-    def list_observations(self):
         self.client.get(
-            "/api/v1/observations?skip=0&limit=20",
-            headers=self.auth_headers,
-            name="GET /api/v1/observations",
+            "/api/v1/fhir/Patient/1192/$everything",
+            name="GET /api/v1/fhir/Patient/{id}/$everything",
         )
 
     @task(2)
-    def list_prescriptions(self):
+    def read_encounter(self) -> None:
+        """Read one known encounter."""
+
         self.client.get(
-            "/api/v1/prescriptions?skip=0&limit=20",
-            headers=self.auth_headers,
-            name="GET /api/v1/prescriptions",
+            "/api/v1/fhir/Encounter/2898",
+            name="GET /api/v1/fhir/Encounter/{id}",
+        )
+
+    @task(3)
+    def read_condition(self) -> None:
+        """Read one known condition."""
+
+        self.client.get(
+            "/api/v1/fhir/Condition/1",
+            name="GET /api/v1/fhir/Condition/{id}",
+        )
+
+    @task(3)
+    def search_patient_conditions(self) -> None:
+        """Search conditions for one known patient."""
+
+        self.client.get(
+            "/api/v1/fhir/Condition?patient=1192&_count=20",
+            name=(
+                "GET /api/v1/fhir/Condition"
+                "?patient={id}&_count=20"
+            ),
         )

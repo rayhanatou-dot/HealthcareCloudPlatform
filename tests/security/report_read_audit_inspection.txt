@@ -1,0 +1,654 @@
+﻿
+=== CURRENT GIT HEAD ===
+9000b51 Add diagnostic report audit validation
+
+=== DIAGNOSTIC REPORT GET ROUTES ===
+
+LINE: 233
+@router.get(
+    "/{report_id}",
+    response_model=DiagnosticReportResponse,
+    status_code=status.HTTP_200_OK,
+)
+def get_diagnostic_report(
+    report_id: int,
+    request: Request,
+    current_user: User = Depends(
+        require_roles(
+            "Admin",
+            "Doctor",
+            "Nurse",
+            "Lab Staff",
+            "Data Manager",
+        )
+    ),
+    db: Session = Depends(get_db),
+) -> DiagnosticReportResponse:
+    """
+    Retrieve structured diagnostic-report metadata
+    from PostgreSQL.
+
+    A successful metadata access is recorded
+    in the audit log.
+    """
+
+    report = db.get(
+        DiagnosticReport,
+        report_id,
+    )
+
+    if report is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Diagnostic report not found",
+        )
+
+    audit_service.safe_record_event(
+        db,
+        action="REPORT_READ",
+        outcome="SUCCESS",
+        user_id=current_user.id,
+        resource_type="DiagnosticReport",
+        resource_id=report.id,
+        request=request,
+
+LINE: 291
+@router.get(
+    "/{report_id}/download",
+    status_code=status.HTTP_200_OK,
+)
+def download_diagnostic_report(
+    report_id: int,
+    request: Request,
+    current_user: User = Depends(
+        require_roles(
+            "Admin",
+            "Doctor",
+            "Nurse",
+            "Lab Staff",
+        )
+    ),
+    db: Session = Depends(get_db),
+) -> Response:
+    """
+    Download a diagnostic-report object through
+    the FastAPI backend.
+
+    MinIO remains private and is not exposed
+    directly to the client.
+
+    SHA-256 integrity is verified before the
+    file is returned.
+
+    A successful download is recorded
+    in the audit log.
+    """
+
+    report = db.get(
+        DiagnosticReport,
+        report_id,
+    )
+
+    if report is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Diagnostic report not found",
+        )
+
+    try:
+        file_data = storage_service.download_bytes(
+            report.object_key
+        )
+
+=== DIAGNOSTIC REPORT AUDIT USAGE ===
+
+LINE: 29
+    DiagnosticReportResponse,
+)
+from app.services import (
+    audit_service,
+    diagnostic_report_service,
+    storage_service,
+)
+
+
+router = APIRouter(
+    prefix="/diagnostic-reports",
+    tags=["Diagnostic Reports"],
+
+LINE: 30
+)
+from app.services import (
+    audit_service,
+    diagnostic_report_service,
+    storage_service,
+)
+
+
+router = APIRouter(
+    prefix="/diagnostic-reports",
+    tags=["Diagnostic Reports"],
+)
+
+LINE: 41
+)
+
+
+MAX_REPORT_SIZE_BYTES = 10 * 1024 * 1024
+
+
+ALLOWED_CONTENT_TYPES = {
+    "application/pdf",
+    "text/plain",
+    "image/jpeg",
+    "image/png",
+}
+
+LINE: 60
+async def create_diagnostic_report(
+    request: Request,
+    patient_id: int = Form(...),
+    report_type: str = Form(...),
+    title: str = Form(...),
+    issued_at: datetime = Form(...),
+    file: UploadFile = File(...),
+    encounter_id: int | None = Form(None),
+    external_id: str | None = Form(None),
+    source_system: str | None = Form(None),
+    report_status: str = Form("final"),
+    conclusion: str | None = Form(None),
+
+LINE: 67
+    encounter_id: int | None = Form(None),
+    external_id: str | None = Form(None),
+    source_system: str | None = Form(None),
+    report_status: str = Form("final"),
+    conclusion: str | None = Form(None),
+    current_user: User = Depends(
+        require_roles(
+            "Admin",
+            "Doctor",
+            "Lab Staff",
+        )
+    ),
+
+LINE: 83
+    its structured metadata in PostgreSQL.
+
+    Access is restricted through RBAC.
+    A successful upload is recorded in the audit log.
+    """
+
+    patient = db.get(
+        Patient,
+        patient_id,
+    )
+
+    if patient is None:
+
+LINE: 142
+        )
+
+    file_data = await file.read(
+        MAX_REPORT_SIZE_BYTES + 1
+    )
+
+    if not file_data:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Uploaded file is empty",
+        )
+
+
+LINE: 151
+            detail="Uploaded file is empty",
+        )
+
+    if len(file_data) > MAX_REPORT_SIZE_BYTES:
+        raise HTTPException(
+            status_code=(
+                status.HTTP_413_REQUEST_ENTITY_TOO_LARGE
+            ),
+            detail=(
+                "File exceeds the maximum allowed "
+                "size of 10 MB"
+            ),
+
+LINE: 164
+
+    try:
+        report = (
+            diagnostic_report_service.create_report(
+                db,
+                patient_id=patient_id,
+                encounter_id=encounter_id,
+                uploaded_by_id=current_user.id,
+                report_type=report_type,
+                title=title,
+                issued_at=issued_at,
+                original_filename=file.filename,
+
+LINE: 169
+                patient_id=patient_id,
+                encounter_id=encounter_id,
+                uploaded_by_id=current_user.id,
+                report_type=report_type,
+                title=title,
+                issued_at=issued_at,
+                original_filename=file.filename,
+                content_type=content_type,
+                data=file_data,
+                external_id=external_id,
+                source_system=source_system,
+                status=report_status,
+
+LINE: 177
+                data=file_data,
+                external_id=external_id,
+                source_system=source_system,
+                status=report_status,
+                conclusion=conclusion,
+            )
+        )
+
+        audit_service.safe_record_event(
+            db,
+            action="REPORT_UPLOAD",
+            outcome="SUCCESS",
+
+LINE: 182
+            )
+        )
+
+        audit_service.safe_record_event(
+            db,
+            action="REPORT_UPLOAD",
+            outcome="SUCCESS",
+            user_id=current_user.id,
+            resource_type="DiagnosticReport",
+            resource_id=report.id,
+            request=request,
+            details={
+
+LINE: 184
+
+        audit_service.safe_record_event(
+            db,
+            action="REPORT_UPLOAD",
+            outcome="SUCCESS",
+            user_id=current_user.id,
+            resource_type="DiagnosticReport",
+            resource_id=report.id,
+            request=request,
+            details={
+                "patient_id": report.patient_id,
+                "encounter_id": report.encounter_id,
+
+LINE: 193
+            details={
+                "patient_id": report.patient_id,
+                "encounter_id": report.encounter_id,
+                "report_type": report.report_type,
+                "file_size_bytes": (
+                    report.file_size_bytes
+                ),
+                "content_type": report.content_type,
+            },
+        )
+
+        return DiagnosticReportResponse.model_validate(
+
+LINE: 234
+
+
+@router.get(
+    "/{report_id}",
+    response_model=DiagnosticReportResponse,
+    status_code=status.HTTP_200_OK,
+)
+def get_diagnostic_report(
+    report_id: int,
+    request: Request,
+    current_user: User = Depends(
+        require_roles(
+
+LINE: 239
+    status_code=status.HTTP_200_OK,
+)
+def get_diagnostic_report(
+    report_id: int,
+    request: Request,
+    current_user: User = Depends(
+        require_roles(
+            "Admin",
+            "Doctor",
+            "Nurse",
+            "Lab Staff",
+            "Data Manager",
+
+LINE: 257
+    from PostgreSQL.
+
+    A successful metadata access is recorded
+    in the audit log.
+    """
+
+    report = db.get(
+        DiagnosticReport,
+        report_id,
+    )
+
+    if report is None:
+
+LINE: 262
+
+    report = db.get(
+        DiagnosticReport,
+        report_id,
+    )
+
+    if report is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Diagnostic report not found",
+        )
+
+
+LINE: 271
+            detail="Diagnostic report not found",
+        )
+
+    audit_service.safe_record_event(
+        db,
+        action="REPORT_READ",
+        outcome="SUCCESS",
+        user_id=current_user.id,
+        resource_type="DiagnosticReport",
+        resource_id=report.id,
+        request=request,
+        details={
+
+LINE: 273
+
+    audit_service.safe_record_event(
+        db,
+        action="REPORT_READ",
+        outcome="SUCCESS",
+        user_id=current_user.id,
+        resource_type="DiagnosticReport",
+        resource_id=report.id,
+        request=request,
+        details={
+            "patient_id": report.patient_id,
+            "encounter_id": report.encounter_id,
+
+LINE: 282
+        details={
+            "patient_id": report.patient_id,
+            "encounter_id": report.encounter_id,
+            "report_type": report.report_type,
+        },
+    )
+
+    return DiagnosticReportResponse.model_validate(
+        report
+    )
+
+
+
+LINE: 292
+
+
+@router.get(
+    "/{report_id}/download",
+    status_code=status.HTTP_200_OK,
+)
+def download_diagnostic_report(
+    report_id: int,
+    request: Request,
+    current_user: User = Depends(
+        require_roles(
+            "Admin",
+
+LINE: 296
+    status_code=status.HTTP_200_OK,
+)
+def download_diagnostic_report(
+    report_id: int,
+    request: Request,
+    current_user: User = Depends(
+        require_roles(
+            "Admin",
+            "Doctor",
+            "Nurse",
+            "Lab Staff",
+        )
+
+LINE: 319
+    file is returned.
+
+    A successful download is recorded
+    in the audit log.
+    """
+
+    report = db.get(
+        DiagnosticReport,
+        report_id,
+    )
+
+    if report is None:
+
+LINE: 324
+
+    report = db.get(
+        DiagnosticReport,
+        report_id,
+    )
+
+    if report is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Diagnostic report not found",
+        )
+
+
+LINE: 380
+        or "application/octet-stream"
+    )
+
+    audit_service.safe_record_event(
+        db,
+        action="REPORT_DOWNLOAD",
+        outcome="SUCCESS",
+        user_id=current_user.id,
+        resource_type="DiagnosticReport",
+        resource_id=report.id,
+        request=request,
+        details={
+
+LINE: 382
+
+    audit_service.safe_record_event(
+        db,
+        action="REPORT_DOWNLOAD",
+        outcome="SUCCESS",
+        user_id=current_user.id,
+        resource_type="DiagnosticReport",
+        resource_id=report.id,
+        request=request,
+        details={
+            "patient_id": report.patient_id,
+            "encounter_id": report.encounter_id,
+
+LINE: 391
+        details={
+            "patient_id": report.patient_id,
+            "encounter_id": report.encounter_id,
+            "report_type": report.report_type,
+            "file_size_bytes": (
+                report.file_size_bytes
+            ),
+            "content_type": report.content_type,
+            "integrity_verified": integrity_verified,
+        },
+    )
+
+
+=== AUDIT IMPLEMENTATION FILES ===
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\dependencies\rbac.py
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\diagnostic_reports.py
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\models\audit_log.py
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\services\audit_service.py
+
+=== AUDIT ACTION DEFINITIONS ===
+
+FILE: C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\diagnostic_reports.py
+LINE: 184
+        audit_service.safe_record_event(
+            db,
+            action="REPORT_UPLOAD",
+            outcome="SUCCESS",
+            user_id=current_user.id,
+            resource_type="DiagnosticReport",
+            resource_id=report.id,
+            request=request,
+            details={
+                "patient_id": report.patient_id,
+                "encounter_id": report.encounter_id,
+
+FILE: C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\diagnostic_reports.py
+LINE: 273
+    audit_service.safe_record_event(
+        db,
+        action="REPORT_READ",
+        outcome="SUCCESS",
+        user_id=current_user.id,
+        resource_type="DiagnosticReport",
+        resource_id=report.id,
+        request=request,
+        details={
+            "patient_id": report.patient_id,
+            "encounter_id": report.encounter_id,
+
+FILE: C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\diagnostic_reports.py
+LINE: 382
+    audit_service.safe_record_event(
+        db,
+        action="REPORT_DOWNLOAD",
+        outcome="SUCCESS",
+        user_id=current_user.id,
+        resource_type="DiagnosticReport",
+        resource_id=report.id,
+        request=request,
+        details={
+            "patient_id": report.patient_id,
+            "encounter_id": report.encounter_id,
+
+FILE: C:\Users\ASUS\healthcare-cloud-platform\backend\app\models\audit_log.py
+LINE: 16
+
+
+class AuditLog(Base):
+    """
+    Immutable security and activity audit record.
+
+    Audit logs capture security-relevant events such as
+    authentication, authorization decisions, uploads,
+    metadata access, and diagnostic-report downloads.
+    """
+
+
+FILE: C:\Users\ASUS\healthcare-cloud-platform\backend\app\services\audit_service.py
+LINE: 10
+
+
+class AuditService:
+    """
+    Centralized service for recording security-relevant
+    and healthcare-data access events.
+
+    Sensitive values such as passwords, JWT tokens,
+    authorization headers, and file contents must never
+    be stored in audit details.
+    """
+
+=== AUDIT SERVICE PUBLIC METHODS ===
+
+FILE: C:\Users\ASUS\healthcare-cloud-platform\backend\app\services\audit_service.py
+
+LINE: 21
+    def _get_client_ip(
+        request: Request | None,
+    ) -> str | None:
+        """
+        Extract the client IP address from the request.
+        """
+
+        if request is None:
+            return None
+
+        forwarded_for = request.headers.get(
+            "x-forwarded-for"
+        )
+
+LINE: 46
+    def _get_user_agent(
+        request: Request | None,
+    ) -> str | None:
+        """
+        Extract and limit the User-Agent value.
+        """
+
+        if request is None:
+            return None
+
+        user_agent = request.headers.get(
+            "user-agent"
+        )
+
+LINE: 66
+    def _serialize_details(
+        details: dict[str, Any] | None,
+    ) -> str | None:
+        """
+        Serialize structured audit details as JSON text.
+        """
+
+        if details is None:
+            return None
+
+        return json.dumps(
+            details,
+            ensure_ascii=False,
+
+LINE: 83
+    def record_event(
+        self,
+        db: Session,
+        *,
+        action: str,
+        outcome: str,
+        user_id: int | None = None,
+        resource_type: str | None = None,
+        resource_id: str | int | None = None,
+        request: Request | None = None,
+        details: dict[str, Any] | None = None,
+        commit: bool = True,
+    ) -> AuditLog:
+
+LINE: 155
+    def safe_record_event(
+        self,
+        db: Session,
+        *,
+        action: str,
+        outcome: str,
+        user_id: int | None = None,
+        resource_type: str | None = None,
+        resource_id: str | int | None = None,
+        request: Request | None = None,
+        details: dict[str, Any] | None = None,
+    ) -> AuditLog | None:
+        """
+
+=== TARGETED STATUS ===

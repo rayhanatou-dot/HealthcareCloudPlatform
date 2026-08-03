@@ -1,0 +1,11 @@
+     table_name     | records 
+--------------------+---------
+ audit_logs         |   40462
+ conditions         |  643513
+ diagnostic_reports |       5
+ encounters         |  121649
+ observations       |  592173
+ patients           |  117581
+ prescriptions      |   66458
+(7 rows)
+

@@ -1,0 +1,300 @@
+=== 2026-07-29 15:48:34 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.35%     102.1MiB / 7.738GiB   1.29%     273MB / 238MB     14.4MB / 348kB    56
+ecdf7dd4feff   healthcare_postgres   0.05%     269.1MiB / 7.738GiB   3.40%     303MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     88.04MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:48:41 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.11%     102.1MiB / 7.738GiB   1.29%     273MB / 238MB     14.4MB / 348kB    56
+ecdf7dd4feff   healthcare_postgres   0.07%     269MiB / 7.738GiB     3.39%     303MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.13%     87.99MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:48:48 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.19%     102.1MiB / 7.738GiB   1.29%     273MB / 238MB     14.4MB / 348kB    56
+ecdf7dd4feff   healthcare_postgres   0.02%     268.8MiB / 7.738GiB   3.39%     303MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.09%     87.99MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:48:55 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.17%     102.1MiB / 7.738GiB   1.29%     273MB / 238MB     14.4MB / 348kB    56
+ecdf7dd4feff   healthcare_postgres   0.00%     269.4MiB / 7.738GiB   3.40%     303MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.11%     87.99MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:49:02 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    464.93%   106.7MiB / 7.738GiB   1.35%     274MB / 239MB     15.5MB / 348kB    59
+ecdf7dd4feff   healthcare_postgres   7.84%     270.1MiB / 7.738GiB   3.41%     304MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.10%     87.99MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:49:09 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.20%     106.4MiB / 7.738GiB   1.34%     274MB / 239MB     15.5MB / 348kB    59
+ecdf7dd4feff   healthcare_postgres   0.03%     270.1MiB / 7.738GiB   3.41%     304MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.98MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:49:16 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.24%     106.4MiB / 7.738GiB   1.34%     274MB / 239MB     15.5MB / 348kB    59
+ecdf7dd4feff   healthcare_postgres   0.00%     270.1MiB / 7.738GiB   3.41%     304MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.98MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:49:23 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.24%     106.4MiB / 7.738GiB   1.34%     274MB / 239MB     15.5MB / 348kB    59
+ecdf7dd4feff   healthcare_postgres   0.00%     270.2MiB / 7.738GiB   3.41%     304MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.08%     87.98MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:49:30 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.14%     106.4MiB / 7.738GiB   1.34%     274MB / 239MB     15.5MB / 348kB    59
+ecdf7dd4feff   healthcare_postgres   0.00%     270.1MiB / 7.738GiB   3.41%     304MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.01%     87.98MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:49:37 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.24%     106.6MiB / 7.738GiB   1.34%     274MB / 239MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.01%     270.1MiB / 7.738GiB   3.41%     304MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.17%     87.94MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:49:44 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.25%     106.6MiB / 7.738GiB   1.34%     274MB / 239MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.00%     269.6MiB / 7.738GiB   3.40%     304MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.93MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:49:51 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.16%     106.6MiB / 7.738GiB   1.34%     274MB / 239MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.00%     269.9MiB / 7.738GiB   3.41%     304MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.25%     87.92MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:49:58 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.19%     106.6MiB / 7.738GiB   1.34%     274MB / 239MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.00%     269.7MiB / 7.738GiB   3.40%     304MB / 291MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.04%     87.92MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:50:05 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    1.72%     108.5MiB / 7.738GiB   1.37%     275MB / 240MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.00%     270.5MiB / 7.738GiB   3.41%     304MB / 292MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.09%     87.92MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:50:12 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.11%     108.5MiB / 7.738GiB   1.37%     275MB / 240MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.00%     270.5MiB / 7.738GiB   3.41%     304MB / 292MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.13%     87.92MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:50:19 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.23%     108.5MiB / 7.738GiB   1.37%     275MB / 240MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.00%     270.5MiB / 7.738GiB   3.41%     304MB / 292MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.04%     87.92MiB / 7.738GiB   1.11%     1.02MB / 4.78MB   74.1MB / 367MB    13
+=== 2026-07-29 15:50:26 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.22%     108.5MiB / 7.738GiB   1.37%     275MB / 240MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.00%     270.5MiB / 7.738GiB   3.41%     304MB / 292MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.91MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 367MB    13
+=== 2026-07-29 15:50:33 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.17%     108.5MiB / 7.738GiB   1.37%     275MB / 240MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.00%     270.6MiB / 7.738GiB   3.41%     304MB / 292MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.04%     87.91MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 367MB    13
+=== 2026-07-29 15:50:40 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.19%     109.2MiB / 7.738GiB   1.38%     275MB / 240MB     15.5MB / 348kB    51
+ecdf7dd4feff   healthcare_postgres   9.99%     270.6MiB / 7.738GiB   3.42%     304MB / 292MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.16%     87.86MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 367MB    13
+=== 2026-07-29 15:50:47 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.18%     109.2MiB / 7.738GiB   1.38%     275MB / 240MB     15.5MB / 348kB    51
+ecdf7dd4feff   healthcare_postgres   0.00%     270.5MiB / 7.738GiB   3.41%     304MB / 292MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.15%     87.86MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 367MB    13
+=== 2026-07-29 15:50:54 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.20%     109.2MiB / 7.738GiB   1.38%     275MB / 240MB     15.5MB / 348kB    51
+ecdf7dd4feff   healthcare_postgres   0.00%     270.5MiB / 7.738GiB   3.41%     304MB / 292MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.86MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 367MB    13
+=== 2026-07-29 15:51:01 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.30%     109.2MiB / 7.738GiB   1.38%     275MB / 240MB     15.5MB / 348kB    51
+ecdf7dd4feff   healthcare_postgres   0.00%     270.5MiB / 7.738GiB   3.41%     304MB / 292MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.11%     87.86MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 367MB    13
+=== 2026-07-29 15:51:08 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.25%     110.1MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    65
+ecdf7dd4feff   healthcare_postgres   0.01%     270.8MiB / 7.738GiB   3.42%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.05%     87.86MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 367MB    13
+=== 2026-07-29 15:51:15 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.15%     110.1MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    65
+ecdf7dd4feff   healthcare_postgres   0.01%     270.6MiB / 7.738GiB   3.41%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.12%     87.86MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:51:22 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.19%     110.1MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    65
+ecdf7dd4feff   healthcare_postgres   0.33%     270.9MiB / 7.738GiB   3.42%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.08%     87.85MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:51:29 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.15%     110.1MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    65
+ecdf7dd4feff   healthcare_postgres   0.03%     270.9MiB / 7.738GiB   3.42%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.17%     87.85MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:51:36 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    2.93%     109.8MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.01%     271.2MiB / 7.738GiB   3.42%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      1.26%     87.82MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:51:43 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.10%     109.8MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.00%     271.2MiB / 7.738GiB   3.42%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.05%     87.79MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:51:50 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.18%     109.8MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.00%     271.2MiB / 7.738GiB   3.42%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.04%     87.79MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:51:57 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.24%     109.8MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.02%     271.6MiB / 7.738GiB   3.43%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.20%     87.79MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:52:04 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    31.80%    110MiB / 7.738GiB     1.39%     276MB / 241MB     15.5MB / 348kB    62
+ecdf7dd4feff   healthcare_postgres   1.40%     271.6MiB / 7.738GiB   3.43%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.79MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:52:11 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.17%     110.2MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    62
+ecdf7dd4feff   healthcare_postgres   0.01%     271.5MiB / 7.738GiB   3.43%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.08%     87.79MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:52:18 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.16%     110.2MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    62
+ecdf7dd4feff   healthcare_postgres   0.00%     271.6MiB / 7.738GiB   3.43%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.14%     87.79MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:52:25 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.28%     110.2MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    62
+ecdf7dd4feff   healthcare_postgres   0.01%     271.1MiB / 7.738GiB   3.42%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.18%     87.78MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:52:32 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.12%     110.2MiB / 7.738GiB   1.39%     276MB / 241MB     15.5MB / 348kB    62
+ecdf7dd4feff   healthcare_postgres   11.30%    271.4MiB / 7.738GiB   3.42%     304MB / 293MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.05%     87.78MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:52:39 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.23%     110.5MiB / 7.738GiB   1.40%     277MB / 242MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.00%     271.8MiB / 7.738GiB   3.43%     304MB / 294MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.09%     87.73MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:52:46 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.19%     110.5MiB / 7.738GiB   1.40%     277MB / 242MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.00%     271.6MiB / 7.738GiB   3.43%     304MB / 294MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.73MiB / 7.738GiB   1.11%     1.02MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:52:53 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.14%     110.5MiB / 7.738GiB   1.40%     277MB / 242MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   8.66%     271.8MiB / 7.738GiB   3.43%     304MB / 294MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.72MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:53:00 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.24%     110.5MiB / 7.738GiB   1.40%     277MB / 242MB     15.5MB / 348kB    58
+ecdf7dd4feff   healthcare_postgres   0.89%     271.5MiB / 7.738GiB   3.43%     304MB / 294MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.21%     87.72MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:53:07 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    1.43%     110.8MiB / 7.738GiB   1.40%     277MB / 242MB     15.5MB / 348kB    53
+ecdf7dd4feff   healthcare_postgres   0.00%     271.9MiB / 7.738GiB   3.43%     304MB / 294MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.72MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:53:15 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.14%     110.8MiB / 7.738GiB   1.40%     277MB / 242MB     15.5MB / 348kB    53
+ecdf7dd4feff   healthcare_postgres   0.00%     272MiB / 7.738GiB     3.43%     304MB / 294MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.72MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:53:21 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.73%     110.2MiB / 7.738GiB   1.39%     277MB / 242MB     15.5MB / 348kB    53
+ecdf7dd4feff   healthcare_postgres   0.00%     271.9MiB / 7.738GiB   3.43%     304MB / 294MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.12%     87.71MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:53:28 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.26%     110.2MiB / 7.738GiB   1.39%     277MB / 242MB     15.5MB / 348kB    53
+ecdf7dd4feff   healthcare_postgres   0.01%     272.1MiB / 7.738GiB   3.43%     304MB / 294MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.71MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:53:35 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    3.35%     109.8MiB / 7.738GiB   1.39%     277MB / 242MB     15.5MB / 348kB    53
+ecdf7dd4feff   healthcare_postgres   0.00%     272.1MiB / 7.738GiB   3.43%     304MB / 294MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.33%     87.71MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:53:42 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.24%     111.3MiB / 7.738GiB   1.40%     278MB / 242MB     15.5MB / 348kB    66
+ecdf7dd4feff   healthcare_postgres   0.00%     272.2MiB / 7.738GiB   3.44%     304MB / 295MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.03%     87.91MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:53:49 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.11%     111.3MiB / 7.738GiB   1.40%     278MB / 242MB     15.5MB / 348kB    66
+ecdf7dd4feff   healthcare_postgres   0.00%     272.2MiB / 7.738GiB   3.44%     304MB / 295MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.20%     87.91MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:53:56 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.13%     111.3MiB / 7.738GiB   1.40%     278MB / 242MB     15.5MB / 348kB    66
+ecdf7dd4feff   healthcare_postgres   0.00%     272.3MiB / 7.738GiB   3.44%     304MB / 295MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.00%     87.91MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:54:03 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.17%     111.3MiB / 7.738GiB   1.40%     278MB / 242MB     15.5MB / 348kB    66
+ecdf7dd4feff   healthcare_postgres   7.05%     272.4MiB / 7.738GiB   3.44%     304MB / 295MB     1.24GB / 2.73GB   56
+9076fadfa48e   healthcare_minio      0.09%     87.91MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:54:10 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.19%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.00%     204.1MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      0.23%     87.9MiB / 7.738GiB    1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:54:17 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.11%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.01%     204.3MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      0.00%     87.9MiB / 7.738GiB    1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:54:25 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.13%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.00%     204.3MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      0.00%     87.9MiB / 7.738GiB    1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:54:31 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.13%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.00%     204.3MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      0.12%     87.9MiB / 7.738GiB    1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:54:38 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.17%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.00%     204.1MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      0.02%     88.1MiB / 7.738GiB    1.11%     1.03MB / 4.79MB   74.1MB / 368MB    13
+=== 2026-07-29 15:54:45 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.18%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.01%     204.1MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      0.17%     88.1MiB / 7.738GiB    1.11%     1.03MB / 4.79MB   74.1MB / 369MB    13
+=== 2026-07-29 15:54:52 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.12%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.00%     204.1MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      0.05%     88.09MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 369MB    13
+=== 2026-07-29 15:54:59 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.12%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.53%     204.2MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      0.05%     88.09MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 369MB    13
+=== 2026-07-29 15:55:07 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.20%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.00%     204.4MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      0.00%     88.09MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 369MB    13
+=== 2026-07-29 15:55:13 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.12%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.01%     204.4MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      0.00%     88.09MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 369MB    13
+=== 2026-07-29 15:55:20 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.17%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.01%     204.2MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      0.18%     88.09MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 369MB    13
+=== 2026-07-29 15:55:27 ===
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+7010b8c1d2a4   healthcare_backend    0.16%     111.3MiB / 7.738GiB   1.40%     279MB / 242MB     15.5MB / 348kB    60
+ecdf7dd4feff   healthcare_postgres   0.00%     204.6MiB / 7.738GiB   2.58%     305MB / 296MB     1.24GB / 2.73GB   26
+9076fadfa48e   healthcare_minio      11.84%    88.09MiB / 7.738GiB   1.11%     1.03MB / 4.79MB   74.1MB / 369MB    13

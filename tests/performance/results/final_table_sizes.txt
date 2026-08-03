@@ -1,0 +1,14 @@
+     table_name     | total_size | data_size  | index_size 
+--------------------+------------+------------+------------
+ conditions         | 304 MB     | 127 MB     | 177 MB
+ observations       | 263 MB     | 142 MB     | 121 MB
+ patients           | 50 MB      | 17 MB      | 32 MB
+ prescriptions      | 36 MB      | 19 MB      | 18 MB
+ encounters         | 32 MB      | 18 MB      | 15 MB
+ audit_logs         | 15 MB      | 9392 kB    | 6192 kB
+ diagnostic_reports | 112 kB     | 8192 bytes | 96 kB
+ users              | 80 kB      | 8192 bytes | 64 kB
+ roles              | 56 kB      | 8192 bytes | 48 kB
+ alembic_version    | 24 kB      | 8192 bytes | 16 kB
+(10 rows)
+

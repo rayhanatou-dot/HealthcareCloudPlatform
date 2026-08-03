@@ -1,0 +1,4 @@
+CONTAINER ID   NAME                  CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS
+60e3fb3e5290   healthcare_backend    0.88%     352.3MiB / 7.738GiB   4.45%     631MB / 549MB    76.5MB / 729kB    33
+ecdf7dd4feff   healthcare_postgres   0.00%     263.9MiB / 7.738GiB   3.33%     402MB / 902MB    1.28GB / 2.73GB   52
+9076fadfa48e   healthcare_minio      0.22%     87.77MiB / 7.738GiB   1.11%     1.04MB / 4.8MB   74.7MB / 374MB    13

@@ -1,0 +1,5 @@
+    database_name    | database_size 
+---------------------+---------------
+ healthcare_cloud_db | 709 MB
+(1 row)
+
