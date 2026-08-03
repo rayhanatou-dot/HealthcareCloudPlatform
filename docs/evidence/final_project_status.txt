@@ -1,9 +1,9 @@
-﻿FINAL PROJECT VALIDATION STATUS
-Overall status: INCOMPLETE
-PASS: 6
+FINAL PROJECT VALIDATION STATUS
+Overall status: PASS
+PASS: 7
 FAIL: 0
-PENDING: 1
+PENDING: 0
 REVIEW: 0
 
-CSV: .\tests\final_validation\final_validation_matrix.csv
-Markdown: .\tests\final_validation\final_validation_matrix.md
+CSV: C:\Users\ASUS\healthcare-cloud-platform\tests\final_validation\final_validation_matrix.csv
+Markdown: C:\Users\ASUS\healthcare-cloud-platform\tests\final_validation\final_validation_matrix.md
