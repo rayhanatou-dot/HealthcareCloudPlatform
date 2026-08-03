@@ -1,0 +1,12 @@
+﻿PostgreSQL Backup and Restore Validation
+Timestamp: 2026-07-29 19:04:32
+Source database: healthcare_cloud_db
+Restore database: healthcare_cloud_db_restore_test
+Backup file: C:\Users\ASUS\healthcare-cloud-platform\tests\recovery\backups\healthcare_cloud_db_20260729_190358.dump
+Backup bytes: 52847270
+Backup SHA-256: 9E65191A2E27744D95B68208A8A14C46A01739A3A227D8104465F407404899C7
+Source database bytes: 743316503
+Restored database bytes: 658979863
+Tables checked: 9
+Passed: 9
+Failed: 0

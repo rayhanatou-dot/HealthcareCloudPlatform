@@ -1,0 +1,9 @@
+﻿Test,ExpectedStatus,ActualStatus,Passed
+Valid login,200,200,True
+Invalid password,401,401,True
+Unknown username,401,401,True
+Valid JWT on protected endpoint,200,200,True
+Missing JWT,401,401,True
+Malformed JWT,401,401,True
+Tampered JWT signature,401,401,True
+Wrong authorization scheme,401,401,True
