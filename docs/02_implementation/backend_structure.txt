@@ -1,0 +1,179 @@
+﻿Folder PATH listing
+Volume serial number is 0000002C DCEE:282D
+C:\USERS\ASUS\HEALTHCARE-CLOUD-PLATFORM\BACKEND\APP
+│  main.py
+│  __init__.py
+│  
+├─api
+│  │  __init__.py
+│  │  
+│  ├─dependencies
+│  │  │  auth.py
+│  │  │  rbac.py
+│  │  │  __init__.py
+│  │  │  
+│  │  └─__pycache__
+│  │          auth.cpython-311.pyc
+│  │          rbac.cpython-311.pyc
+│  │          __init__.cpython-311.pyc
+│  │          
+│  ├─v1
+│  │  │  router.py
+│  │  │  __init__.py
+│  │  │  
+│  │  ├─endpoints
+│  │  │  │  auth.py
+│  │  │  │  diagnostic_reports.py
+│  │  │  │  encounters.py
+│  │  │  │  fhir.py
+│  │  │  │  fhir_conditions.py
+│  │  │  │  observations.py
+│  │  │  │  patients.py
+│  │  │  │  prescriptions.py
+│  │  │  │  
+│  │  │  └─__pycache__
+│  │  │          auth.cpython-311.pyc
+│  │  │          diagnostic_reports.cpython-311.pyc
+│  │  │          encounters.cpython-311.pyc
+│  │  │          fhir_conditions.cpython-311.pyc
+│  │  │          observations.cpython-311.pyc
+│  │  │          patients.cpython-311.pyc
+│  │  │          prescriptions.cpython-311.pyc
+│  │  │          
+│  │  └─__pycache__
+│  │          router.cpython-311.pyc
+│  │          __init__.cpython-311.pyc
+│  │          
+│  └─__pycache__
+│          __init__.cpython-311.pyc
+│          
+├─core
+│  │  config.py
+│  │  security.py
+│  │  __init__.py
+│  │  
+│  └─__pycache__
+│          config.cpython-311.pyc
+│          security.cpython-311.pyc
+│          __init__.cpython-311.pyc
+│          
+├─db
+│  │  base.py
+│  │  base_imports.py
+│  │  session.py
+│  │  __init__.py
+│  │  
+│  └─__pycache__
+│          base.cpython-311.pyc
+│          base_imports.cpython-311.pyc
+│          session.cpython-311.pyc
+│          __init__.cpython-311.pyc
+│          
+├─fhir
+│      __init__.py
+│      
+├─models
+│  │  audit_log.py
+│  │  condition.py
+│  │  diagnostic_report.py
+│  │  encounter.py
+│  │  observation.py
+│  │  patient.py
+│  │  prescription.py
+│  │  role.py
+│  │  user.py
+│  │  __init__.py
+│  │  
+│  └─__pycache__
+│          audit_log.cpython-311.pyc
+│          condition.cpython-311.pyc
+│          diagnostic_report.cpython-311.pyc
+│          encounter.cpython-311.pyc
+│          observation.cpython-311.pyc
+│          patient.cpython-311.pyc
+│          prescription.cpython-311.pyc
+│          role.cpython-311.pyc
+│          user.cpython-311.pyc
+│          __init__.cpython-311.pyc
+│          
+├─repositories
+│      __init__.py
+│      
+├─schemas
+│  │  auth.py
+│  │  diagnostic_report.py
+│  │  encounter.py
+│  │  observation.py
+│  │  patient.py
+│  │  prescription.py
+│  │  __init__.py
+│  │  
+│  └─__pycache__
+│          auth.cpython-311.pyc
+│          diagnostic_report.cpython-311.pyc
+│          encounter.cpython-311.pyc
+│          observation.cpython-311.pyc
+│          patient.cpython-311.pyc
+│          prescription.cpython-311.pyc
+│          __init__.cpython-311.pyc
+│          
+├─scripts
+│  │  check_synthea_files.py
+│  │  create_demo_pharmacist.py
+│  │  create_demo_rbac_users.py
+│  │  create_demo_user.py
+│  │  import_synthea_all.py
+│  │  import_synthea_encounters.py
+│  │  import_synthea_medications.py
+│  │  import_synthea_observations.py
+│  │  import_synthea_patients.py
+│  │  __init__.py
+│  │  
+│  └─__pycache__
+│          check_synthea_files.cpython-311.pyc
+│          import_synthea_all.cpython-311.pyc
+│          import_synthea_encounters.cpython-311.pyc
+│          import_synthea_medications.cpython-311.pyc
+│          import_synthea_observations.cpython-311.pyc
+│          import_synthea_patients.cpython-311.pyc
+│          __init__.cpython-311.pyc
+│          
+├─services
+│  │  audit_service.py
+│  │  diagnostic_report_service.py
+│  │  encounter_service.py
+│  │  observation_service.py
+│  │  patient_service.py
+│  │  prescription_service.py
+│  │  storage_service.py
+│  │  synthea_encounter_importer.py
+│  │  __init__.py
+│  │  
+│  ├─ingestion
+│  │  │  synthea_encounter_importer.py
+│  │  │  synthea_medication_importer.py
+│  │  │  synthea_observation_importer.py
+│  │  │  synthea_patient_importer.py
+│  │  │  __init__.py
+│  │  │  
+│  │  └─__pycache__
+│  │          synthea_encounter_importer.cpython-311.pyc
+│  │          synthea_medication_importer.cpython-311.pyc
+│  │          synthea_observation_importer.cpython-311.pyc
+│  │          synthea_patient_importer.cpython-311.pyc
+│  │          __init__.cpython-311.pyc
+│  │          
+│  └─__pycache__
+│          audit_service.cpython-311.pyc
+│          diagnostic_report_service.cpython-311.pyc
+│          encounter_service.cpython-311.pyc
+│          observation_service.cpython-311.pyc
+│          patient_service.cpython-311.pyc
+│          prescription_service.cpython-311.pyc
+│          storage_service.cpython-311.pyc
+│          __init__.cpython-311.pyc
+│          
+└─__pycache__
+        main.cpython-311.pyc
+        __init__.cpython-311.pyc
+        

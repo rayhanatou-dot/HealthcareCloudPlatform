@@ -1,0 +1,5 @@
+﻿NAME                       IMAGE                     COMMAND                   SERVICE    CREATED       STATUS                 PORTS
+healthcare_prod_backend    healthcare-prod-backend   "uvicorn app.main:ap鈥?   backend    6 hours ago   Up 6 hours (healthy)   8000/tcp
+healthcare_prod_minio      minio/minio:latest        "/usr/bin/docker-ent鈥?   minio      6 hours ago   Up 6 hours             9000/tcp
+healthcare_prod_nginx      nginx:stable-alpine       "/docker-entrypoint.鈥?   nginx      6 hours ago   Up 6 hours             0.0.0.0:8080->80/tcp, [::]:8080->80/tcp
+healthcare_prod_postgres   postgres:16               "docker-entrypoint.s鈥?   postgres   6 hours ago   Up 6 hours (healthy)   5432/tcp

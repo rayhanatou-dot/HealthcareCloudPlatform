@@ -1,0 +1,4 @@
+﻿minio
+postgres
+backend
+nginx

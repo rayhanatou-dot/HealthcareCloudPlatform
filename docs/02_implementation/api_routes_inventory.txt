@@ -1,0 +1,32 @@
+﻿
+Path                                                                                       LineNumber Line                                                
+----                                                                                       ---------- ----                                                
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\auth.py                        2     APIRouter,                                      
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\auth.py                       30 router = APIRouter(                                 
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\diagnostic_reports.py          6     APIRouter,                                      
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\diagnostic_reports.py         35 router = APIRouter(                                 
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\encounters.py                  2     APIRouter,                                      
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\encounters.py                 26 encounters_router = APIRouter(                      
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\fhir.py                        2     APIRouter,                                      
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\fhir.py                       20 router = APIRouter(                                 
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\fhir_conditions.py             2     APIRouter,                                      
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\fhir_conditions.py            15 router = APIRouter(                                 
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\observations.py                2     APIRouter,                                      
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\observations.py               27 observations_router = APIRouter(                    
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\patients.py                    2     APIRouter,                                      
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\patients.py                   27 router = APIRouter(                                 
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\prescriptions.py               2     APIRouter,                                      
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\endpoints\prescriptions.py              27 prescriptions_router = APIRouter(                   
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\router.py                                1 from fastapi import APIRouter                       
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\router.py                               17 api_router = APIRouter()                            
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\router.py                               20 api_router.include_router(auth_router)              
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\router.py                               21 api_router.include_router(patients_router)          
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\router.py                               22 api_router.include_router(encounters_router)        
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\router.py                               23 api_router.include_router(observations_router)      
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\router.py                               24 api_router.include_router(prescriptions_router)     
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\router.py                               25 api_router.include_router(diagnostic_reports_router)
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\router.py                               26 api_router.include_router(fhir_router)              
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\api\v1\router.py                               27 api_router.include_router(fhir_conditions_router)   
+C:\Users\ASUS\healthcare-cloud-platform\backend\app\main.py                                        97 app.include_router(                                 
+
+
