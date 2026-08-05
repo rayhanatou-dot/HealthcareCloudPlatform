@@ -1,0 +1,3 @@
+﻿"component","test_date","git_commit","backup_start","backup_end","backup_size_bytes","sha256","restore_start","restore_end","rto_seconds","rpo_seconds","source_item_count","restored_item_count","integrity_status","evidence_reference","notes"
+"PostgreSQL","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING",""
+"MinIO","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING","PENDING",""
